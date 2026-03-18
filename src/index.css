@@ -1,56 +1,457 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 240 10% 3.9%;
+    --card-foreground: 215 25% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 10% 3.9%;
+    --popover-foreground: 215 25% 15%;
 
-    --primary: 240 5.9% 10%;
-    --primary-foreground: 0 0% 98%;
+    --primary: 217 91% 35%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 240 4.8% 95.9%;
-    --secondary-foreground: 240 5.9% 10%;
+    --secondary: 215 20% 92%;
+    --secondary-foreground: 215 25% 15%;
 
-    --muted: 240 4.8% 95.9%;
-    --muted-foreground: 240 3.8% 46.1%;
+    --muted: 215 20% 92%;
+    --muted-foreground: 215 15% 45%;
 
-    --accent: 240 4.8% 95.9%;
-    --accent-foreground: 240 5.9% 10%;
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 240 5.9% 90%;
-    --input: 240 5.9% 90%;
-    --ring: 240 5.9% 10%;
+    --border: 215 20% 88%;
+    --input: 215 20% 88%;
+    --ring: 217 91% 35%;
 
-    --radius: 0.75rem;
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
 
-    --sidebar: 240 5% 98%;
-    --sidebar-foreground: 240 3.8% 46.1%;
-    --sidebar-active: 240 10% 3.9%;
+    --kemenkeu-gold: 45 100% 51%;
+    --kemenkeu-gold-dark: 40 100% 40%;
+    --kemenkeu-blue: 217 91% 35%;
+    --kemenkeu-blue-light: 210 100% 50%;
 
-    --shadow-card: 0 0 0 1px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.04);
-    --shadow-card-hover: 0 0 0 1px rgba(0,0,0,0.12), 0 8px 16px -4px rgba(0,0,0,0.08);
-    --shadow-ring: 0 0 0 1px rgba(0,0,0,0.05), 0 1px 2px rgba(0,0,0,0.1);
+    --radius: 0.5rem;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%), hsl(210 100% 50%));
+    --shadow-elegant: 0 4px 20px -4px hsl(217 91% 35% / 0.15);
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
+  .dark {
+    --background: 215 28% 10%;
+    --foreground: 210 20% 95%;
+
+    --card: 215 25% 12%;
+    --card-foreground: 210 20% 95%;
+
+    --popover: 215 25% 12%;
+    --popover-foreground: 210 20% 95%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 25% 18%;
+    --secondary-foreground: 210 20% 95%;
+
+    --muted: 215 25% 18%;
+    --muted-foreground: 215 15% 65%;
+
+    --accent: 217 91% 35%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 215 25% 20%;
+    --input: 215 25% 20%;
+    --ring: 210 100% 50%;
+    
+    --success: 142 76% 36%;
+    --success-foreground: 0 0% 100%;
+    
+    --kemenkeu-gold: 45 100% 51%;
+    --kemenkeu-gold-dark: 40 100% 40%;
+    --kemenkeu-blue: 217 91% 35%;
+    --kemenkeu-blue-light: 210 100% 50%;
+    
+    --gradient-primary: linear-gradient(135deg, hsl(217 91% 35%), hsl(210 100% 50%));
+    --shadow-elegant: 0 4px 20px -4px hsl(210 100% 50% / 0.15);
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    @apply bg-background text-foreground;
+  }
+
+  /* Responsive font sizing */
+  h1 {
+    @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl;
+  }
+
+  h2 {
+    @apply text-lg sm:text-xl md:text-2xl lg:text-3xl;
+  }
+
+  h3 {
+    @apply text-base sm:text-lg md:text-xl lg:text-2xl;
+  }
+
+  h4 {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  /* Ensure tables are responsive */
+  table {
+    @apply text-xs sm:text-sm;
+  }
+}
+
+@layer utilities {
+  /* Responsive text utilities */
+  .text-responsive-xs {
+    @apply text-xs sm:text-sm;
+  }
+
+  .text-responsive-sm {
+    @apply text-sm sm:text-base;
+  }
+
+  .text-responsive-base {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-responsive-lg {
+    @apply text-base sm:text-lg md:text-xl;
+  }
+
+  /* Responsive padding utilities */
+  .px-responsive {
+    @apply px-3 sm:px-4 md:px-6;
+  }
+
+  .py-responsive {
+    @apply py-2 sm:py-3 md:py-4;
+  }
+
+  .p-responsive {
+    @apply p-3 sm:p-4 md:p-6;
+  }
+
+  /* Responsive gap utilities */
+  .gap-responsive {
+    @apply gap-2 sm:gap-3 md:gap-4;
+  }
+
+  /* Ensure no horizontal overflow */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  /* Kemenkeu themed gradients - Yellow (#FFCC00 ~ HSL 45,100%,50%) and Blue (#1B4F8C ~ HSL 217,91%,35%) */
+  .kemenkeu-card-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--kemenkeu-blue) / 0.08) 0%, 
+      hsl(var(--kemenkeu-gold) / 0.06) 50%,
+      hsl(var(--kemenkeu-blue-light) / 0.04) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-blue) / 0.15);
+  }
+
+  .kemenkeu-card-gradient-blue {
+    background: linear-gradient(145deg, 
+      hsl(var(--kemenkeu-blue) / 0.1) 0%, 
+      hsl(var(--kemenkeu-blue-light) / 0.05) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-blue) / 0.2);
+  }
+
+  .kemenkeu-card-gradient-gold {
+    background: linear-gradient(145deg, 
+      hsl(var(--kemenkeu-gold) / 0.12) 0%, 
+      hsl(var(--kemenkeu-gold-dark) / 0.06) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-gold) / 0.25);
+  }
+
+  .kemenkeu-header-gradient {
+    background: linear-gradient(90deg, 
+      hsl(var(--kemenkeu-blue)) 0%, 
+      hsl(var(--kemenkeu-blue-light)) 100%
+    );
+  }
+
+  .kemenkeu-filter-gradient {
+    background: linear-gradient(180deg, 
+      hsl(var(--kemenkeu-blue) / 0.06) 0%, 
+      hsl(var(--kemenkeu-gold) / 0.04) 50%,
+      hsl(var(--background)) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-blue) / 0.12);
+  }
+
+  .kemenkeu-stat-card {
+    background: linear-gradient(135deg, 
+      hsl(var(--kemenkeu-blue) / 0.05) 0%,
+      hsl(var(--kemenkeu-gold) / 0.08) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-gold) / 0.2);
+  }
+
+  .kemenkeu-room-card {
+    background: linear-gradient(160deg, 
+      hsl(var(--kemenkeu-blue) / 0.06) 0%, 
+      hsl(var(--background)) 40%,
+      hsl(var(--kemenkeu-gold) / 0.04) 100%
+    );
+    border: 2px solid hsl(var(--kemenkeu-blue) / 0.15);
+  }
+
+  .kemenkeu-room-header {
+    background: linear-gradient(135deg, 
+      hsl(var(--kemenkeu-blue) / 0.12) 0%, 
+      hsl(var(--kemenkeu-blue-light) / 0.08) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-blue) / 0.2);
+  }
+
+  /* Agenda Hari Ini - Solid Green/Teal like reference */
+  .kemenkeu-agenda-today {
+    background: linear-gradient(135deg, 
+      hsl(168 65% 48%) 0%, 
+      hsl(158 60% 42%) 100%
+    );
+    border: none;
+    color: white;
+  }
+
+  .kemenkeu-agenda-today .text-muted-foreground,
+  .kemenkeu-agenda-today h3,
+  .kemenkeu-agenda-today p {
+    color: white !important;
+  }
+
+  /* Agenda Besok - Solid Yellow/Gold like reference */
+  .kemenkeu-agenda-tomorrow {
+    background: linear-gradient(135deg, 
+      hsl(45 100% 51%) 0%, 
+      hsl(40 100% 45%) 100%
+    );
+    border: none;
+    color: white;
+  }
+
+  .kemenkeu-agenda-tomorrow .text-muted-foreground,
+  .kemenkeu-agenda-tomorrow h3,
+  .kemenkeu-agenda-tomorrow p {
+    color: white !important;
+  }
+
+  /* Kalender Agenda - Solid Blue like reference */
+  .kemenkeu-calendar-gradient {
+    background: linear-gradient(135deg, 
+      hsl(217 91% 45%) 0%, 
+      hsl(217 91% 35%) 100%
+    );
+    border: none;
+    color: white;
+  }
+
+  .kemenkeu-calendar-gradient .text-muted-foreground,
+  .kemenkeu-calendar-gradient h3,
+  .kemenkeu-calendar-gradient p:not(.text-primary) {
+    color: hsl(0 0% 90%) !important;
+  }
+
+  /* Statistik Agenda - Solid Orange like reference */
+  .kemenkeu-stat-agenda {
+    background: linear-gradient(135deg, 
+      hsl(30 100% 55%) 0%, 
+      hsl(25 95% 50%) 100%
+    );
+    border: none;
+    color: white;
+  }
+
+  .kemenkeu-stat-agenda .text-muted-foreground,
+  .kemenkeu-stat-agenda h3,
+  .kemenkeu-stat-agenda p {
+    color: white !important;
+  }
+
+  /* Statistik Booking - Solid Purple like reference */
+  .kemenkeu-stat-booking {
+    background: linear-gradient(135deg, 
+      hsl(280 70% 55%) 0%, 
+      hsl(270 65% 50%) 100%
+    );
+    border: none;
+    color: white;
+  }
+
+  .kemenkeu-stat-booking .text-muted-foreground,
+  .kemenkeu-stat-booking h3,
+  .kemenkeu-stat-booking p {
+    color: white !important;
+  }
+
+  /* Monitoring Room Cards - Colorful variants */
+  .kemenkeu-room-blue {
+    background: linear-gradient(160deg, 
+      hsl(var(--kemenkeu-blue) / 0.12) 0%, 
+      hsl(var(--kemenkeu-blue-light) / 0.08) 100%
+    );
+    border: 2px solid hsl(var(--kemenkeu-blue) / 0.25);
+  }
+
+  .kemenkeu-room-gold {
+    background: linear-gradient(160deg, 
+      hsl(var(--kemenkeu-gold) / 0.15) 0%, 
+      hsl(var(--kemenkeu-gold-dark) / 0.08) 100%
+    );
+    border: 2px solid hsl(var(--kemenkeu-gold) / 0.3);
+  }
+
+  .kemenkeu-room-purple {
+    background: linear-gradient(160deg, 
+      hsl(270 60% 50% / 0.1) 0%, 
+      hsl(280 50% 60% / 0.06) 100%
+    );
+    border: 2px solid hsl(270 60% 50% / 0.2);
+  }
+
+  .kemenkeu-room-orange {
+    background: linear-gradient(160deg, 
+      hsl(30 100% 50% / 0.12) 0%, 
+      hsl(35 95% 55% / 0.06) 100%
+    );
+    border: 2px solid hsl(30 100% 50% / 0.25);
+  }
+
+  /* Booking Room Row Colors */
+  .kemenkeu-booking-row-blue {
+    background: linear-gradient(90deg, 
+      hsl(var(--kemenkeu-blue) / 0.08) 0%, 
+      hsl(var(--kemenkeu-blue-light) / 0.04) 100%
+    );
+  }
+
+  .kemenkeu-booking-row-gold {
+    background: linear-gradient(90deg, 
+      hsl(var(--kemenkeu-gold) / 0.1) 0%, 
+      hsl(var(--kemenkeu-gold-dark) / 0.05) 100%
+    );
+  }
+
+  .kemenkeu-booking-row-orange {
+    background: linear-gradient(90deg, 
+      hsl(30 100% 50% / 0.1) 0%, 
+      hsl(35 95% 55% / 0.05) 100%
+    );
+  }
+
+  .kemenkeu-booking-row-purple {
+    background: linear-gradient(90deg, 
+      hsl(270 60% 50% / 0.08) 0%, 
+      hsl(280 50% 60% / 0.04) 100%
+    );
+  }
+
+  .dark .kemenkeu-card-gradient {
+    background: linear-gradient(135deg, 
+      hsl(var(--kemenkeu-blue) / 0.15) 0%, 
+      hsl(var(--kemenkeu-gold) / 0.08) 50%,
+      hsl(var(--kemenkeu-blue-light) / 0.06) 100%
+    );
+    border: 1px solid hsl(var(--kemenkeu-blue) / 0.25);
+  }
+
+  .dark .kemenkeu-filter-gradient {
+    background: linear-gradient(180deg, 
+      hsl(var(--kemenkeu-blue) / 0.12) 0%, 
+      hsl(var(--kemenkeu-gold) / 0.06) 50%,
+      hsl(var(--background)) 100%
+    );
+  }
+
+  .dark .kemenkeu-agenda-today {
+    background: linear-gradient(135deg, 
+      hsl(168 65% 38%) 0%, 
+      hsl(158 60% 32%) 100%
+    );
+  }
+
+  .dark .kemenkeu-agenda-tomorrow {
+    background: linear-gradient(135deg, 
+      hsl(45 100% 41%) 0%, 
+      hsl(40 100% 35%) 100%
+    );
+  }
+
+  .dark .kemenkeu-calendar-gradient {
+    background: linear-gradient(135deg, 
+      hsl(217 91% 35%) 0%, 
+      hsl(217 91% 25%) 100%
+    );
+  }
+
+  .dark .kemenkeu-stat-agenda {
+    background: linear-gradient(135deg, 
+      hsl(30 100% 45%) 0%, 
+      hsl(25 95% 40%) 100%
+    );
+  }
+
+  .dark .kemenkeu-stat-booking {
+    background: linear-gradient(135deg, 
+      hsl(280 70% 45%) 0%, 
+      hsl(270 65% 40%) 100%
+    );
   }
 }
